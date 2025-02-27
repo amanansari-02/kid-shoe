@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const Buy_page = () => {
     const { id } = useParams();
     const [shoe, setShoe] = useState(null);
-
+ 
     useEffect(() => {
         fetch(`http://localhost:5000/api/item/${id}`)
             .then((response) => {
