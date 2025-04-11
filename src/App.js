@@ -1,7 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import About from "./components/About";
 import Adidas from "./components/brand/Adidas";
@@ -24,18 +29,25 @@ import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Navbar2 from "./components/Navbar2";
 import Portfolio from "./components/Portfolio";
+import OrderDetails from "./components/Order";
 
-function App() {
+function Layout() {
+  const location = useLocation();
+  const hideNavbarAndFooter = location.pathname === "/";
+
   return (
-    
-    <Router> 
-      <Navbar />
-      <Header />
-      <Navbar2 />
+    <>
+      {!hideNavbarAndFooter && (
+        <>
+          <Navbar />
+          <Header />
+          <Navbar2 />
+        </>
+      )}
 
       <Routes>
-        <Route path="/" element={<Clickable_image />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Clickable_image />} />
+        <Route path="/" element={<Login />} />
         <Route path="/Portfolio" element={<Portfolio />} />
         <Route path="/Nike" element={<Nike />} />
         <Route path="/Puma" element={<Puma />} />
@@ -43,6 +55,7 @@ function App() {
         <Route path="/Adidas" element={<Adidas />} />
         <Route path="/Boys_sports" element={<Boys_sports />} />
         <Route path="/Boys_chapels" element={<Boys_chapels />} />
+        <Route path="/order" element={<OrderDetails />} />
         <Route path="/Boys_formals" element={<Boys_formals />} />
         <Route path="/Ladies_sports" element={<Ladies_sports />} />
         <Route path="/Ladies_chapels" element={<Ladies_chapels />} />
@@ -53,7 +66,15 @@ function App() {
         <Route path="/buy/:id" element={<Buy_page />} />
       </Routes>
 
-      <Footer />
+      {!hideNavbarAndFooter && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Layout />
     </Router>
   );
 }

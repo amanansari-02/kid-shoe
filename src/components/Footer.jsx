@@ -23,14 +23,14 @@ function Footer() {
                             <li>🥾 Boots</li>
                             <li>🎾 Sports Shoes</li>
                         </ul>
-                        <h6 className="text-light mt-3">Popular Brands</h6>
+                        {/* <h6 className="text-light mt-3">Popular Brands</h6>
                         <ul className="list-unstyled">
                             <li>⭐ Nike Kids</li>
                             <li>⭐ Adidas Junior</li>
                             <li>⭐ Puma Kids</li>
                             <li>⭐ Skechers</li>
                             <li>⭐ Clarks</li>
-                        </ul>
+                        </ul> */}
                     </div>
 
                     {/* Contact Information */}
